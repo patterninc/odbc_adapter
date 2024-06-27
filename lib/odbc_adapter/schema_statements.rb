@@ -12,15 +12,27 @@ module ODBCAdapter
     # Returns an array of table names, for database tables visible on the
     # current connection.
     def tables(_name = nil)
-      stmt   = @connection.tables
-      result = stmt.fetch || []
-      stmt.drop
+      begin
+        if @config.key?(:silo_fetch_all_tables) && @config[:silo_fetch_all_tables]
+          stmt = @connection.prepare("SHOW TABLES")
+          col_idx = stmt.columns.keys.map.with_index.to_h
+          q_res = stmt.execute.fetch_all
+          result = q_res.map { |row| [row[col_idx["database_name"]], row[col_idx["schema_name"]], row[col_idx["name"]], row[col_idx["kind"]], row[col_idx["comment"]]] }
+        else
+          stmt   = @connection.tables
+          result = stmt.fetch_all || []
+        end
 
-      result.each_with_object([]) do |row, table_names|
-        schema_name, table_name, table_type = row[1..3]
-        next if respond_to?(:table_filtered?) && table_filtered?(schema_name, table_type)
+        result ||= []
 
-        table_names << format_case(table_name)
+        result.each_with_object([]) do |row, table_names|
+          schema_name, table_name, table_type = row[1..3]
+          next if respond_to?(:table_filtered?) && table_filtered?(schema_name, table_type)
+
+          table_names << format_case(table_name)
+        end
+      ensure
+        stmt.drop
       end
     end
 
