@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: odbc-adapter
+  description: 'A Onboard an Existing Repo to Backstage created via Backstage'
+  annotations:
+    repo: patterninc/odbc_adapter
+  labels:
+    CostCenter: PXM
+    Environment: stage
+    Name: odbc-adapter
+    Owner: dev-pxm
+    Department: PXM
+    CreatedBy: Backstage
+spec:
+  type: service
+  system: pxm
