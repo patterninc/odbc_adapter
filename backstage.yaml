@@ -6,10 +6,10 @@ metadata:
   annotations:
     repo: patterninc/odbc_adapter
   labels:
-    CostCenter: PXM
+    CostCenter: PREDICT
     Environment: stage
     Name: odbc-adapter
-    Owner: dev-pxm
+    Owner: dev-core
     Department: PXM
     CreatedBy: Backstage
 spec:
