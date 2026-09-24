@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module ODBCAdapter
-  VERSION = '5.0.6'
+  VERSION = '6.1.3'
 end
