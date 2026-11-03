@@ -1,0 +1,14 @@
+{
+  "$schema": "https://oly.ai-sdlc.aws.pattern.com/schemas/pattern-agents/v2.schema.json",
+  "schema_version": 2,
+  "github": {
+    "repo": "patterninc/odbc_adapter"
+  },
+  "projects": [
+    {
+      "ref": "clickup:space:90176191851",
+      "name": "Ecom Tech",
+      "description": "Ecom Tech ClickUp space, where this repo's AI-readiness task (86e3yc348) is tracked. Owning team folder/list not yet confirmed."
+    }
+  ]
+}
