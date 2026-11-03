@@ -66,8 +66,10 @@ From `odbc_adapter.gemspec`:
 Notes:
 
 - `rake test` has `rubocop` as a prerequisite (Rakefile), so a lint failure stops the test run.
-- Tests need a **live database** reached through ODBC. `test/test_helper.rb` uses `CONN_STR`, else
-  `DSN`, else the DSN `ODBCAdapterPostgreSQLTest`. There is no offline/mocked mode.
+- Tests need a **live database** reached through ODBC. `test/test_helper.rb` passes `CONN_STR` and/or
+  `DSN`, falling back to the DSN `ODBCAdapterPostgreSQLTest` when neither is set. If both are set,
+  `DSN` wins (`odbc_connection` checks `:dsn` first), so unset `DSN` when using `CONN_STR`. There is
+  no offline/mocked mode.
 - Example connection strings used by `docker/test.sh` and `.travis.yml`:
   - MySQL: `DRIVER=MySQL;SERVER=localhost;DATABASE=odbc_test;USER=root;PASSWORD=;`
   - PostgreSQL: `DRIVER={PostgreSQL ANSI};SERVER=localhost;PORT=5432;DATABASE=odbc_test;UID=postgres;`

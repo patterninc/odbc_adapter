@@ -10,7 +10,8 @@ working CI (`.travis.yml` is defunct), so this run is the only verification a ch
 
 ## Inputs
 
-- `CONN_STR` (preferred) or `DSN`: how to reach a **throwaway** database named `odbc_test`.
+- `CONN_STR` or `DSN`: how to reach a **throwaway** database named `odbc_test`. Set only one;
+  if both are set, `DSN` wins (`odbc_connection` checks `:dsn` first) and `CONN_STR` is ignored.
   If neither is set, `test/test_helper.rb` uses the DSN `ODBCAdapterPostgreSQLTest`.
 - Which DBMS to cover: PostgreSQL, MySQL, or both. Cover both when you touch shared code
   (`lib/active_record/connection_adapters/odbc_adapter.rb` or `lib/odbc_adapter/*.rb`). Covering

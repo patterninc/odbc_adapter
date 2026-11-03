@@ -27,8 +27,8 @@ Options considered:
 1. **Contribute upstream and wait for a release.** Upstream was inactive, so this would block
    Pattern's Rails 6 upgrade indefinitely.
 2. **Switch to a DBMS-specific adapter** (for example a native Snowflake adapter). That means a
-   larger change in every consuming app, and at the time there was no maintained, drop-in
-   ActiveRecord adapter.
+   larger change in every consuming app. (Reconstructed option: the repository does not record
+   whether this was evaluated.)
 3. **Fork into `patterninc/odbc_adapter` and maintain it.** Keep the public gem name and API, fix
    Rails/Ruby compatibility, and add Pattern-specific type mappings.
 
