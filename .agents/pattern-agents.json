@@ -3,12 +3,5 @@
   "schema_version": 2,
   "github": {
     "repo": "patterninc/odbc_adapter"
-  },
-  "projects": [
-    {
-      "ref": "clickup:space:90176191851",
-      "name": "Ecom Tech",
-      "description": "Placeholder: Ecom Tech ClickUp space. Replace with the owning team's folder/list ref once confirmed."
-    }
-  ]
+  }
 }
